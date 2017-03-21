@@ -1,4 +1,6 @@
 module Main where
 
+import Lib
+
 main :: IO ()
-main = putStrLn "Hello, Haskell!"
+main = hardIO 2000 5 >>= print
