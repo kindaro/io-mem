@@ -1,9 +1,13 @@
 module Lib where
 
+import Data.Array
 import Data.Array.IO
+import Data.Numbers.Primes
 import Data.Time.Clock
 import System.Random
 
+hardPure :: Int -> Int -> Int
+hardPure n m = sum . elems $ array (1, n) $ zip [1..] $ take n $ drop m $ primes
 
 hardIO :: Int -> Int -> IO Int
 hardIO space time = do
