@@ -9,8 +9,9 @@ hardIO :: Int -> Int -> IO Int
 hardIO space time = do
     arr <- newArray (1, space) 0 :: IO (IOUArray Int Int)
     timer <- spin time
-    mapM_ (readArray arr) [1..space]
-    fst . next <$> newStdGen
+    arrTotal <- sum <$> mapM (readArray arr) [1..space]
+    random <- fst . next <$> newStdGen
+    return $ arrTotal + random
 
 -- A grace de cirdec at stackoverflow.
 spin :: Real a => a -> IO ()
