@@ -15,7 +15,7 @@ hardIO space time = do
     timer <- spin time
     arrTotal <- sum <$> mapM (readArray arr) [1..space]
     random <- fst . next <$> newStdGen
-    return $ arrTotal + random
+    return $! arrTotal + random
 
 -- A grace de cirdec at stackoverflow.
 spin :: Real a => a -> IO ()
